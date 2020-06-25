@@ -66,6 +66,19 @@ class Unpublish {
 		if ( wp_next_scheduled( self::$deprecated_cron_key ) ) {
 			add_action( self::$deprecated_cron_key, array( self::$instance, 'unpublish_content' ) );
 		}
+
+		add_action( 'init', array( self::$instance, 'register_meta' ) );
+	}
+
+	/**
+	 * Registers our post meta key with the REST API.
+	 */
+	public function register_meta() {
+		register_meta( 'post', self::$post_meta_key, array(
+			'show_in_rest' => true,
+			'single'       => true,
+			'type'         => 'string',
+		) );
 	}
 
 	/**
