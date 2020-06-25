@@ -28,6 +28,22 @@
 	width: 2em;
 }
 
+.unpublish-date,
+.unpublish-time {
+	float: left;
+	margin-top: .6em;
+	margin-bottom: .6em;
+}
+
+.unpublish-date {
+	margin-right: .4em;
+}
+
+.unpublish-timestamp-wrap p {
+	clear: both;
+	margin-top: .4em;
+}
+
 #unpublish-block-editor #unpublish-aa {
 	width: 3.6em;
 }
@@ -36,4 +52,10 @@
 #unpublish-block-editor #unpublish-hh,
 #unpublish-block-editor #unpublish-mn {
 	width: 2.5em;
+}
+
+@media screen and (min-width: 783px) {
+	#unpublish-block-editor .unpublish-date {
+		margin-bottom: 0;
+	}
 }
