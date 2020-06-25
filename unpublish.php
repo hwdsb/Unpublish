@@ -199,7 +199,7 @@ class Unpublish {
 	 *  Enqueue scripts & styles
 	 */
 	public function enqueue_scripts_styles() {
-		wp_enqueue_style( 'unpublish', plugins_url( 'css/unpublish.css', __FILE__ ), array(), '0.1-alpha' );
+		wp_enqueue_style( 'unpublish', plugins_url( 'css/unpublish.css', __FILE__ ), array(), '20200625' );
 		wp_enqueue_script( 'unpublish', plugins_url( 'js/unpublish.js', __FILE__ ), array( 'jquery' ), '0.1-alpha', true );
 		wp_localize_script( 'unpublish', 'unpublish', array(
 			/* translators: 1: month, 2: day, 3: year, 4: hour, 5: minute */

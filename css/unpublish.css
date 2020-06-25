@@ -27,3 +27,13 @@
 #unpublish-mn {
 	width: 2em;
 }
+
+#unpublish-block-editor #unpublish-aa {
+	width: 3.6em;
+}
+
+#unpublish-block-editor #unpublish-jj,
+#unpublish-block-editor #unpublish-hh,
+#unpublish-block-editor #unpublish-mn {
+	width: 2.5em;
+}
