@@ -91,8 +91,34 @@ class Unpublish {
 			add_action( 'post_submitbox_misc_actions', array( self::$instance, 'render_unpublish_ui' ), 1 );
 			add_action( 'admin_enqueue_scripts', array( self::$instance, 'enqueue_scripts_styles' ) );
 			add_action( 'save_post_' . $post_type, array( self::$instance, 'action_save_unpublish_timestamp' ) );
+			add_action( 'add_meta_boxes', array( self::$instance, 'block_editor_meta_box' ), 0 );
 		}
 
+	}
+
+	/**
+	 * Registers our "Unpublish" metabox for use with the Block Editor.
+	 *
+	 * Note: This is only done for the Block Editor. The Classic Editor uses
+	 * the older 'post_submitbox_misc_actions' hook for better integration
+	 * into the Publish metabox.
+	 *
+	 * @param string $post_type Current post type.
+	 */
+	public function block_editor_meta_box( $post_type ) {
+		// Don't do this for the Classic Editor or if not WP 5.0+.
+		if ( ! function_exists( 'register_block_type' ) || ! get_current_screen()->is_block_editor() ) {
+			return;
+		}
+
+		add_meta_box(
+			'unpublish-block-editor',
+			esc_html__( 'Unpublish', 'unpublish' ),
+			array( self::$instance, 'render_unpublish_ui' ),
+			$post_type,
+			'side',
+			'high'
+		);
 	}
 
 	/**
